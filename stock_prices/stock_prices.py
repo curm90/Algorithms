@@ -21,7 +21,10 @@ def find_max_profit(prices):
             # set min price to prices[i]
             min_price = prices[i]
 
-        return max_profit
+    return max_profit
+
+
+# find_max_profit([10, 7, 5, 8, 11, 9])
 
 
 if __name__ == '__main__':

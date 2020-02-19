@@ -8,11 +8,15 @@ import sys
 
 
 def eating_cookies(n, cache=None):
+    ''' Returns the number of ways n number of cookies can be eaten '''
+
+    # Base cases
     if n < 0:
         return 0
     if n < 2:
         return 1
     else:
+        # Recusivley call eating cookies
         return eating_cookies(n - 1) + eating_cookies(n - 2) + eating_cookies(n - 3)
 
 
