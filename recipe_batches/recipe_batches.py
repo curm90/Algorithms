@@ -11,10 +11,15 @@ def recipe_batches(recipe, ingredients):
     # check ingredients has all nessesary keys
     if len(recipe) > len(ingredients):
         return 0
+
     # loop over keys in recipe
     for key in recipe:
-        # append how many recipes i can make with each ingredient quanitity
-        max_batches.append(ingredients[key] // recipe[key])
+        # check all keys exist in both dicts
+        if key not in ingredients:
+            return 0
+        else:
+            # append how many recipes i can make with each ingredient quanitity
+            max_batches.append(ingredients[key] // recipe[key])
 
     return min(max_batches)
 
@@ -23,6 +28,6 @@ if __name__ == '__main__':
     # Change the entries of these dictionaries to test
     # your implementation with different inputs
     recipe = {'milk': 100, 'butter': 50, 'flour': 5}
-    ingredients = {'milk': 132, 'butter': 48, 'flour': 51}
+    ingredients = {'milk': 132, 'butter': 55, 'flour': 51, 'chocolate': 22}
     print("{batches} batches can be made from the available ingredients: {ingredients}.".format(
         batches=recipe_batches(recipe, ingredients), ingredients=ingredients))
