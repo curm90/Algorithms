@@ -7,22 +7,26 @@ import sys
 # recursive solution
 
 
-def eating_cookies(n, cache={}):
+def eating_cookies(n, cache=None):
     ''' Returns the number of ways n number of cookies can be eaten '''
 
     # Base cases
-    if n in cache:
-        return cache[n]
     if n < 0:
         return 0
     if n < 2:
         return 1
+    if cache and cache[n] > 0:
+        return cache[n]
     else:
+        if not cache:
+            cache = {i: 0 for i in range(n+1)}
+
+        cache[n] = eating_cookies(
+            n-1, cache) + eating_cookies(n-2, cache) + eating_cookies(n-3, cache)
+
+        return cache[n]
+
         # Recusivley call eating cookies
-        value = eating_cookies(
-            n - 1) + eating_cookies(n - 2) + eating_cookies(n - 3)
-        cache[n] = value
-        return value
 
 
 if __name__ == "__main__":
