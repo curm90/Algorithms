@@ -2,13 +2,27 @@
 
 import math
 
+
 def recipe_batches(recipe, ingredients):
-  pass 
+    ''' Returns the max number of batches given the recipe and ingredients  '''
+
+    # place to store the max number of batches
+    max_batches = []
+    # check ingredients has all nessesary keys
+    if len(recipe) > len(ingredients):
+        return 0
+    # loop over keys in recipe
+    for key in recipe:
+        # append how many recipes i can make with each ingredient quanitity
+        max_batches.append(ingredients[key] // recipe[key])
+
+    return min(max_batches)
 
 
 if __name__ == '__main__':
-  # Change the entries of these dictionaries to test 
-  # your implementation with different inputs
-  recipe = { 'milk': 100, 'butter': 50, 'flour': 5 }
-  ingredients = { 'milk': 132, 'butter': 48, 'flour': 51 }
-  print("{batches} batches can be made from the available ingredients: {ingredients}.".format(batches=recipe_batches(recipe, ingredients), ingredients=ingredients))
+    # Change the entries of these dictionaries to test
+    # your implementation with different inputs
+    recipe = {'milk': 100, 'butter': 50, 'flour': 5}
+    ingredients = {'milk': 132, 'butter': 48, 'flour': 51}
+    print("{batches} batches can be made from the available ingredients: {ingredients}.".format(
+        batches=recipe_batches(recipe, ingredients), ingredients=ingredients))
