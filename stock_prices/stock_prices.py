@@ -23,10 +23,11 @@ def find_max_profit(prices):
 
     return max_profit
 
+    # one liner solution
+    # return max(prices[1:]) - min(prices[:prices.index(max(prices[1:]))])
+
 
 # find_max_profit([10, 7, 5, 8, 11, 9])
-
-
 if __name__ == '__main__':
     # This is just some code to accept inputs from the command line
     parser = argparse.ArgumentParser(
